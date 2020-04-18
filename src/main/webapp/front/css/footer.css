@@ -1,0 +1,27 @@
+.page {
+    margin: 120px 0;
+    text-align: center;
+    border-top: 1px solid #eee;
+    opacity: 1;
+	display: block;
+}
+.page a{
+    text-decoration: none;
+}
+.page a:hover{
+    border-top: 1px solid black;
+}
+.page-number {
+    border-bottom: 0;
+ 			border-top: 1px solid #eee;
+ 			display: inline-block;
+    position: relative;
+    top: -1px; 
+    margin: 0 10px;
+    padding: 3px 10px; 
+}
+.current {
+    color: #fff;
+    background: #ccc;
+    border-top-color: #ccc;
+}

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须定义，非绑定到类或是接口的方式 -->
+<mapper namespace="blog.xzbk.dao.LinkDao">
+    <!-- 查询所有记录条数 -->
+	<select id="totalRows" parameterType="int" resultType="int">
+	    SELECT
+			count(*)
+		FROM
+			links
+		WHERE
+			uid = #{uid }
+	</select>
+	<!-- 查询所有数据(不分页) -->
+	<select id="queryAll" parameterType="int" resultType="blog.xzbk.entity.Link">
+	    SELECT
+			*
+		FROM
+			links
+		WHERE
+			uid = #{uid }
+	</select>
+	<!-- 分页查询标签数据一 -->
+	<select id="queryPage" parameterType="blog.xzbk.entity.Link" resultType="blog.xzbk.entity.Link">
+	    SELECT
+			*
+		FROM
+			links
+		WHERE
+			uid = #{uid }
+		<if test="key!=null and key!=''">
+		AND
+			name like concat('%',#{key },'%')
+		</if>
+		LIMIT
+			#{startRow },#{pageSize }
+	</select>
+	<!-- 通过id查询  -->
+	<select id="queryById" parameterType="blog.xzbk.entity.Link" resultType="blog.xzbk.entity.Link">
+	    SELECT
+			*
+		FROM
+			links
+		WHERE
+			id = #{id }
+	</select>
+	<!-- 删除单条数据  -->
+	<delete id="delete" parameterType="int">
+	    DELETE FROM
+	    	links
+	    WHERE
+	    	id = #{id }
+	</delete>
+	<!-- 删除一页数据  -->
+	<delete id="deleteAll">
+	    DELETE FROM
+	    	links
+	    WHERE 
+	    	id
+	    IN
+	    <foreach collection="idArray" item="item" open="(" close=")" separator=",">
+	        #{item }
+	    </foreach>
+	</delete>
+	<!-- 添加一个标签   -->
+	<insert id="add" parameterType="blog.xzbk.entity.Link">
+	    INSERT INTO
+	    	links(
+	    		uid,
+	    		name,
+	    		href
+	    )
+	    VALUES(
+	    	#{uid },
+	    	#{name },
+	    	#{href }
+	    )
+	</insert>
+	<!-- 更新数据 -->
+	<update id="update" parameterType="blog.xzbk.entity.Link">
+	    UPDATE
+	    	links
+	    SET
+	    	name = #{name },
+	    	href = #{href }
+	    WHERE
+	    	id = #{id }
+	</update>
+</mapper>

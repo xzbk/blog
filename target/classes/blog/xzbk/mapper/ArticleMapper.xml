@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须定义，非绑定到类或是接口的方式 -->
+<mapper namespace="blog.xzbk.dao.ArticleDao">
+    <!-- 文章map -->
+    <resultMap type="blog.xzbk.entity.Article" id="articleMap">
+        <id property="id" column="id" javaType="int"/>
+        <result property="name" column="name" javaType="java.lang.String" />
+        <result property="content" column="content" javaType="java.lang.String" />
+        <result property="time" column="time" javaType="java.util.Date" />
+        <result property="uid" column="uid" javaType="int" />
+        <association property="tag" column="tag_id" select="tag" javaType="blog.xzbk.entity.Tag"></association>
+        <association property="category" column="category_id" select="category" javaType="blog.xzbk.entity.Category"></association>
+    </resultMap>
+    <!-- 通过id查询标签 -->
+    <select id="tag" parameterType="int" resultType="blog.xzbk.entity.Tag">
+        SELECT
+        	*
+        FROM
+        	tags
+        WHERE
+        	id = #{id }
+    </select>
+    <!-- 通过id查询分类 -->
+    <select id="category" parameterType="int" resultType="blog.xzbk.entity.Category">
+        SELECT
+        	*
+        FROM
+        	categories
+        WHERE
+        	id = #{id }
+    </select>
+    <!-- 查询所有记录条数 -->
+	<select id="totalRows" parameterType="int" resultType="int">
+	    SELECT
+			count(*)
+		FROM
+			articles
+		WHERE
+			uid = #{uid }
+	</select>
+	<!-- 分页查询文章数据一 -->
+	<select id="queryAll" parameterType="blog.xzbk.entity.PageMsg" resultMap="articleMap">
+	    SELECT
+			*
+		FROM
+			articles
+		WHERE
+			uid = #{uid }
+		<if test="tagId!=null and tagId!=''">
+		AND
+			tag_id = #{tagId }
+		</if>
+		<if test="categoryId!=null and categoryId!=''">
+		AND
+			category_id = #{categoryId }
+		</if>
+		<if test="key!=null and key!=''">
+		AND
+			name like concat('%',#{key },'%')
+		</if>
+		LIMIT
+			#{startRow},#{pageSize}
+	</select>
+	<!-- 通过id查询文章  -->
+	<select id="queryById" parameterType="blog.xzbk.entity.Article" resultMap="articleMap">
+	    SELECT
+			*
+		FROM
+			articles
+		WHERE
+			id = #{id }
+		AND 
+			uid = #{uid }
+	</select>
+	<!-- 删除单条数据  -->
+	<delete id="delete" parameterType="int">
+	    DELETE FROM
+	    	articles
+	    WHERE
+	    	id = #{id }
+	</delete>
+	<!-- 删除一页数据  -->
+	<delete id="deleteAll">
+	    DELETE FROM
+	    	articles
+	    WHERE 
+	    	id
+	    IN
+	    <foreach collection="idArray" item="item" open="(" close=")" separator=",">
+	        #{item }
+	    </foreach>
+	</delete>
+	<!-- 添加一文章   -->
+	<insert id="add" parameterType="blog.xzbk.entity.Article">
+	    INSERT INTO
+	    	articles(
+	    		name,
+	    		content,
+	    		time,
+	    		uid,
+	    		tag_id,
+	    		category_id
+	    		
+	    )
+	    VALUES(
+	    	#{name },
+    		#{content },
+    		NOW(),
+    		#{uid },
+    		#{tag.id },
+    		#{category.id }
+	    )
+	</insert>
+	<!-- 更新数据 -->
+	<update id="update" parameterType="blog.xzbk.entity.Article">
+	    UPDATE
+	    	articles
+	    SET
+	    	name = #{name },
+	    	content = #{content },
+	    	tag_id = #{tag.id },
+	    	category_id = #{category.id }
+	    WHERE
+	    	id = #{id }
+	</update>
+</mapper>

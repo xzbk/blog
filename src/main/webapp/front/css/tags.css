@@ -1,0 +1,19 @@
+/**
+ * 标签界面样式表
+ */
+ #tags-title{
+ 	margin-bottom: 10px;
+ }
+#tags-body a{
+	display: inline-block;
+    margin: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    color: #555;
+    outline: none;
+    word-wrap: break-word;
+    border-bottom: 1px solid #ccc;
+}
+#tags-body a:hover{
+    border-bottom: 1px solid black;
+}

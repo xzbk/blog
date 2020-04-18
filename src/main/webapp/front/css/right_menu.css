@@ -1,0 +1,151 @@
+/**
+ * 右侧隐藏菜单及返回顶部链接样式表
+ */
+#pointer{
+	position: fixed;
+    right: 30px;
+    bottom: 45px;
+    padding: 5px;
+    background: #222;
+    line-height: 0;
+    z-index: 1050;
+    cursor: pointer;
+}
+#rtnTop{
+	position: fixed;
+    right: 30px;
+    bottom: 20px;
+    padding: 5px;
+    background: #222;
+    line-height: 0;
+    z-index: 1050;
+    cursor: pointer;
+}
+.point-color{
+	color:white;
+}
+.point-color:hover{
+	text-decoration: none;
+}
+#right-menu{
+	position: fixed;
+  	height: 100%;
+	width:300px;
+	right: 0px;
+    padding: 20px 10px;
+    color: white;
+    text-align: center;
+    background-color: #101010;
+    display: none;
+}
+#right-menu a {
+	color: #999;
+    background-color: transparent;
+    text-decoration: none;
+    outline: none;
+    border-bottom: 1px solid #999;
+    word-wrap: break-word;
+}
+#right-menu a:hover {
+	outline: 0;
+    color: white;
+    border-bottom-color: white;
+}
+#menu-head{
+	
+}
+#menu-name{
+	margin: 5px 0 10px;
+    text-align: center;
+    color: white;
+    font-weight: normal;
+}
+.menu-head-img{
+	display: block;
+    margin: 0 auto;
+    padding: 2px;
+    max-width: 96px;
+    height: auto;
+    border: 2px solid #333;
+}
+#menu-detail{
+    text-align: center;
+}
+#menu-detail a{
+	color: #999;
+    background-color: transparent;
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+#menu-detail a:hover>span{
+	color: white;
+}
+#menu-detail>ul>li:not(:first-child){
+	display: inline-block;
+    padding: 0 15px;
+    border-left: 1px solid #333;
+}
+.menu-detail-count{
+    font-weight: 600;
+    font-size: 18px;
+}
+.menu-detail-item{
+    font-size: 13px;
+}
+.links-of-author {
+    margin-top: 20px;
+    opacity: 1;
+    display: block;
+    transform: translateX(0px);
+}
+.links-of-author a {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-bottom-color: #555;
+    font-size: 13px;
+}
+.fa{
+    font-family: FontAwesome !important;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 1.28571429em;
+    text-align: center;
+}
+.links-of-author a:before {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+    content: " ";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #fbbebd;
+}
+.links-title{
+	margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.links-list{
+	margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.links-list-item a {
+	padding: 2px 10px;
+	display: list-item;
+    text-align: -webkit-match-parent;
+    max-width: 280px;
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,100 @@
+#archive-content{
+	position: relative;
+    z-index: 1010;
+    margin-left: 55px;
+}
+#archive-content::before {
+    content: " ";
+    position: absolute;
+    top: 11px;
+    left: 0;
+    margin-left: -2px;
+    width: 4px;
+    height: 100%;
+    background: #f5f5f5;
+    z-index: -1;
+}
+.archive-counter {
+    position: relative;
+    top: 3px;
+    left: 20px;
+}
+.archive-cite{
+    position: absolute;
+    top: 2px;
+    left: 0;
+    margin-left: -25px;
+    width: 10px;
+    height: 10px;
+    opacity: 0.5;
+    background: #555;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+.archive-collect-title{
+	opacity: 1;
+	display: block;
+	position: relative;
+	padding-left: 20px;
+    margin: 60px 0;
+	transform: translateX(0px);
+}
+.archive-collect-title::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-left: -4px;
+    margin-top: -4px;
+    width: 8px;
+    height: 8px;
+    background: #bbb;
+    border-radius: 50%;
+}
+.post-header {
+    position: relative;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    transition-property: border;
+    border-bottom: 1px dashed #ccc;
+}
+.post-type-normal{
+	margin: 30px 0;
+}
+.post-header {
+    position: relative;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    transition-property: border;
+    border-bottom: 1px dashed #ccc;
+}
+.post-title{
+    margin: 20px 20px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: inherit;
+}
+.post-title>time{
+	font-size: 14px;
+}
+.post-title>a{
+    text-decoration: none;
+}
+.post-header::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 6px;
+    height: 6px;
+    margin-left: -4px;
+    background: #bbb;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    transition-property: background;
+}

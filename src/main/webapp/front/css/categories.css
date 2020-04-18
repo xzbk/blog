@@ -1,0 +1,24 @@
+/**
+ * 分类界面样式表
+ */
+#categories-title{
+	margin-bottom: 10px;
+}
+#categories-body{
+	margin-top: 20px;
+}
+#categories-body ul>li{
+	list-style: circle;
+}
+#categories-body a{
+	display: inline-block;
+    margin: 5px;
+    text-decoration: none;
+    color: #555;
+    outline: none;
+    word-wrap: break-word;
+    border-bottom: 1px solid #ccc;
+}
+#categories-body a:hover{
+    border-bottom: 1px solid black;
+}

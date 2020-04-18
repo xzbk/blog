@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须定义，非绑定到类或是接口的方式 -->
+<mapper namespace="blog.xzbk.dao.UserDao">
+    <!-- 用户登录 -->
+	<select id="login" parameterType="blog.xzbk.entity.User" resultType="blog.xzbk.entity.User">
+	    SELECT
+			*
+		FROM
+			user
+		WHERE
+			name = #{name} 
+		AND 
+			password = #{password}
+	</select>
+	<!-- 通过id查询用户信息 -->
+	<select id="queryById" parameterType="int" resultType="blog.xzbk.entity.User">
+	    SELECT
+			*
+		FROM
+			user
+		WHERE
+			id = #{id }
+	</select>
+	<!-- 更新用户信息   -->
+	<update id="update" parameterType="blog.xzbk.entity.User">
+	    UPDATE
+	    	user
+	    SET
+	    <choose>
+	        <when test="header!=null and header!=''">
+	            header = #{header }
+	        </when>
+	        <otherwise>
+	            name = #{name },
+		    	password = #{password },
+		    	signature = #{signature },
+		    	github = #{github },
+		    	weibo = #{weibo }
+	        </otherwise>
+	    </choose>
+	    WHERE
+	   		id = #{id }
+	</update>
+</mapper>
