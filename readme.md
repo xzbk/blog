@@ -6,6 +6,7 @@
 * 标签方式展示文章
 * 分类方式展示文章
 * 个人关于页面自定义  
+
 ** 注意：** 通过右侧菜单栏个人头像进入个人中心
 ## 后台模块
 管理员进行用户账号管理
@@ -15,7 +16,7 @@
 SSM(Spring+SpringMvc+Mybatis)
 LayUI+Bootstrap
 # 项目入口
-前台模块入口:http://localhost:8080/blog
-前台模块账号密码：xzbk    1
-后台模块入口:http://localhost:8080/blog/admin.jsp
+前台模块入口:http://localhost:8080/blog  
+前台模块账号密码：xzbk    1  
+后台模块入口:http://localhost:8080/blog/admin.jsp  
 后台模块账号密码：admin   1
